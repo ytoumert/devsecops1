@@ -38,8 +38,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'password-dockerHub', variable: 'DOCKER_HUB_PASSWORD')]) {
                     sh 'sudo docker login -u yantou -p $DOCKER_HUB_PASSWORD'
                     sh 'printenv'
-                    sh 'sudo docker build -t yantou/devops-app:""$GIT_COMMIT"" .'
-                    sh 'sudo docker push yantou/devops-app:""$GIT_COMMIT""'
+                    sh "sudo docker build -t yantou/devops-app:$GIT_COMMIT ."
+                    sh "sudo docker push yantou/devops-app:$GIT_COMMIT"
                 }
             }
         }
